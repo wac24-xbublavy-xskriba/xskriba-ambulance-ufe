@@ -6,10 +6,34 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface XskribaAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface XskribaAmbulanceWlList {
     }
 }
+export interface XskribaAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXskribaAmbulanceWlEditorElement;
+}
 declare global {
+    interface HTMLXskribaAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLXskribaAmbulanceWlEditorElement extends Components.XskribaAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXskribaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLXskribaAmbulanceWlEditorElement, ev: XskribaAmbulanceWlEditorCustomEvent<HTMLXskribaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXskribaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLXskribaAmbulanceWlEditorElement, ev: XskribaAmbulanceWlEditorCustomEvent<HTMLXskribaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLXskribaAmbulanceWlEditorElement: {
+        prototype: HTMLXskribaAmbulanceWlEditorElement;
+        new (): HTMLXskribaAmbulanceWlEditorElement;
+    };
     interface HTMLXskribaAmbulanceWlListElement extends Components.XskribaAmbulanceWlList, HTMLStencilElement {
     }
     var HTMLXskribaAmbulanceWlListElement: {
@@ -17,13 +41,19 @@ declare global {
         new (): HTMLXskribaAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "xskriba-ambulance-wl-editor": HTMLXskribaAmbulanceWlEditorElement;
         "xskriba-ambulance-wl-list": HTMLXskribaAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface XskribaAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: XskribaAmbulanceWlEditorCustomEvent<string>) => void;
+    }
     interface XskribaAmbulanceWlList {
     }
     interface IntrinsicElements {
+        "xskriba-ambulance-wl-editor": XskribaAmbulanceWlEditor;
         "xskriba-ambulance-wl-list": XskribaAmbulanceWlList;
     }
 }
@@ -31,6 +61,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "xskriba-ambulance-wl-editor": LocalJSX.XskribaAmbulanceWlEditor & JSXBase.HTMLAttributes<HTMLXskribaAmbulanceWlEditorElement>;
             "xskriba-ambulance-wl-list": LocalJSX.XskribaAmbulanceWlList & JSXBase.HTMLAttributes<HTMLXskribaAmbulanceWlListElement>;
         }
     }
