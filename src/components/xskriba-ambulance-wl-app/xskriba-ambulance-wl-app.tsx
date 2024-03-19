@@ -40,6 +40,8 @@ export class XskribaAmbulanceWlApp {
   }
 
   render() {
+    console.debug('xskriba-ambulance-wl-app.render() - path: %s', this.relativePath)
+
     let element = 'list'
     let entryId = '@new'
 
